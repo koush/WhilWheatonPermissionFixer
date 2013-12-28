@@ -9,3 +9,4 @@ Debug
 Release
 build
 .gradle
+*.apk

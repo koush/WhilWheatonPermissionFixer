@@ -49,6 +49,7 @@ public class MyActivity extends Activity {
                     int uid = pi.applicationInfo.uid;
                     String dataDir = pi.applicationInfo.dataDir;
                     String command = String.format("busybox chown -R %s:%s %s", uid, uid, dataDir);
+                    command += String.format(" ; busybox chmod -R u+w,u+r %s", dataDir);
                     final int fcount = count;
                     try {
                         runOnUiThread(new Runnable() {
@@ -64,6 +65,7 @@ public class MyActivity extends Activity {
                         p.waitFor();
                     }
                     catch (Exception e) {
+                        e.printStackTrace();
                     }
                 }
                 runOnUiThread(new Runnable() {
