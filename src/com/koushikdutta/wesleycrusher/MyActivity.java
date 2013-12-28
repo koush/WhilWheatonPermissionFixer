@@ -1,6 +1,7 @@
 package com.koushikdutta.wesleycrusher;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -69,6 +70,18 @@ public class MyActivity extends Activity {
                     @Override
                     public void run() {
                         dialog.dismiss();
+                        new AlertDialog.Builder(MyActivity.this)
+                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                finish();
+                            }
+                        })
+                        .setCancelable(false)
+                        .setTitle("Mission Successful")
+                        .setMessage("Don't let the airlock door hit you on the way out.")
+                        .create()
+                        .show();
                     }
                 });
             }
